@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exclusive Grand Opening | The Zetsumetsu Corporation</title>
+<style>
+:root{
+  --bg:#07070d;--panel:#11121b;--panel2:#191925;
+  --text:#f4f2fa;--muted:#a7a5b7;--line:#30303e;
+  --violet:#aa85ff;--cyan:#65e8ed;--gold:#e7be72;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.65 Arial,Helvetica,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.55;cursor:wait}
+.wrap{max-width:1140px;margin:auto;padding:0 24px}
+.eyebrow{
+  color:var(--violet);font-size:11px;font-weight:800;
+  text-transform:uppercase;letter-spacing:2.5px
+}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{line-height:1.12}
+h1{font-size:clamp(49px,7.5vw,94px);letter-spacing:-4px}
+h2{font-size:clamp(30px,4.5vw,49px);letter-spacing:-2px}
+h3{font-size:19px}
+p{color:var(--muted)}
+small{color:var(--muted)}
+.accent{
+  background:linear-gradient(110deg,var(--violet),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:47px;padding:12px 22px;border:1px solid transparent;
+  border-radius:7px;font-weight:800;font-size:12px;
+  letter-spacing:.5px;transition:.2s
+}
+.btn.primary{background:var(--violet);color:#0d0718}
+.btn.primary:hover{background:#c4a9ff;transform:translateY(-2px)}
+.btn.outline{background:transparent;color:var(--text);border-color:#5b526f}
+.btn.outline:hover{border-color:var(--violet)}
+.btn.cyan{background:var(--cyan);color:#061417}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:88px 0}
+.section-head{max-width:680px;margin-bottom:35px}
+.section-head p{margin-top:14px}
+
+header{
+  position:sticky;top:0;z-index:20;
+  background:#08080deF;backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;min-height:75px
+}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{
+  display:grid;place-items:center;width:40px;height:40px;
+  border:2px solid var(--violet);transform:rotate(45deg);
+  color:white;font-size:24px;font-weight:900
+}
+.mark span{transform:rotate(-45deg)}
+.brand strong{
+  display:block;line-height:1.2;font-size:14px;
+  letter-spacing:1px
+}
+.brand small{display:block;font-size:9px;letter-spacing:1.5px}
+nav{display:flex;align-items:center;gap:23px}
+nav a{color:#c7c3d4;font-size:12px}
+nav a:hover{color:white}
+
+.hero{
+  overflow:hidden;position:relative;padding:96px 0 100px;
+  background:radial-gradient(ellipse at 80% 40%,#36204b66,transparent 53%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;
+  align-items:center;gap:40px
+}
+.hero .tag{
+  display:inline-block;border:1px solid #695183;
+  background:#2b1a3955;color:#ddc9ff;border-radius:50px;
+  padding:7px 13px;font-size:11px;letter-spacing:1px;
+  margin-bottom:28px
+}
+.hero h1{margin-bottom:24px}
+.hero p{font-size:17px;max-width:550px;margin-bottom:28px}
+.hero .note{margin-top:20px;font-size:11px;color:#b6acc9}
+.portal{
+  position:relative;aspect-ratio:1;max-width:430px;
+  display:grid;place-items:center;margin:auto
+}
+.ring{
+  position:absolute;inset:5%;border-radius:50%;
+  border:1px solid #9270db77;
+  box-shadow:0 0 50px #7c4ce622,inset 0 0 60px #7c4ce61c;
+  animation:spin 25s linear infinite
+}
+.ring:before,.ring:after{
+  content:"";position:absolute;inset:12%;border:1px dashed #66e8ee77;
+  border-radius:50%
+}
+.ring:after{inset:-10%;border-style:dotted;border-color:#b692ff55}
+.orb{
+  width:65%;aspect-ratio:1;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px;
+  background:radial-gradient(circle at 35% 25%,#5a367e,#1e182b 65%,#08080c);
+  box-shadow:0 0 95px #9464e63d,inset 0 0 30px #b8a0f41a;
+  border:1px solid #886ab7
+}
+.orb .big{font-size:clamp(52px,7vw,76px);font-weight:900;line-height:1}
+.orb .mini{font-size:10px;letter-spacing:2px;color:#c8b7e3;margin-top:12px}
+.orb .dash{width:36px;height:2px;background:var(--cyan);margin:16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.strip{border-block:1px solid var(--line);background:#10101a}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr)}
+.metric{padding:29px;text-align:center;border-right:1px solid var(--line)}
+.metric:last-child{border:0}
+.metric strong{font-size:29px;display:block;line-height:1.3}
+.metric span{font-size:11px;color:var(--muted);letter-spacing:1px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{
+  background:linear-gradient(150deg,#181723,#0d0d14);
+  border:1px solid var(--line);border-radius:13px;padding:25px
+}
+.card .number{font-size:11px;color:var(--cyan);font-weight:800;letter-spacing:2px}
+.card h3{margin:14px 0 10px}
+.card p{font-size:13px;margin:0}
+.gold{color:var(--gold)}
+.subtle{background:#0d0e16}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.step{
+  display:flex;align-items:flex-start;gap:18px;
+  border:1px solid var(--line);border-radius:10px;
+  padding:22px;background:#161620
+}
+.step .n{
+  width:35px;height:35px;flex-shrink:0;
+  display:grid;place-items:center;
+  border-radius:7px;background:#322342;color:#e1caff;font-weight:900
+}
+.step h3{margin:0 0 7px;font-size:16px}
+.step p{font-size:12px;margin:0}
+.step small{display:block;margin-top:8px;color:var(--gold);font-size:11px}
+.funding{
+  margin-top:28px;padding:25px;border-radius:13px;
+  background:#11111c;border:1px solid #413353
+}
+.funding h3{margin-bottom:18px}
+.fund-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fund{
+  border-left:2px solid var(--violet);padding:7px 13px;
+  background:#1c192a
+}
+.fund strong{display:block;font-size:25px}
+.fund span{font-size:11px;color:var(--muted)}
+.funding>p{font-size:12px;margin:17px 0 0}
+
+.sponsor-block{
+  display:grid;grid-template-columns:.9fr 1.1fr;
+  border:1px solid #504265;border-radius:16px;
+  overflow:hidden;background:#16121f
+}
+.sponsor-art{
+  min-height:350px;padding:45px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:radial-gradient(circle at top,#5b367866,#180f25 75%)
+}
+.sponsor-art .amount{font-size:85px;font-weight:900;line-height:1}
+.sponsor-art span{color:#d5bedf;font-size:12px;letter-spacing:2px}
+.sponsor-copy{padding:45px}
+.sponsor-copy h2{font-size:35px}
+.sponsor-copy p{font-size:14px}
+.sponsor-copy ul{color:#c5bed0;padding-left:19px;font-size:13px}
+.sponsor-copy li{margin:9px 0}
+.sponsor-copy .fine{font-size:11px;margin-top:13px}
+
+.reality{text-align:center;max-width:850px;margin:auto}
+.reality blockquote{
+  margin:25px 0;font-size:clamp(25px,4vw,45px);
+  font-weight:800;line-height:1.25;letter-spacing:-1px
+}
+.reality p{max-width:670px;margin:0 auto 20px}
+.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.action-card{
+  border:1px solid var(--line);border-radius:13px;
+  background:var(--panel);padding:32px
+}
+.action-card h3{font-size:26px;margin:12px 0}
+.action-card p{font-size:13px;min-height:65px}
+.action-card .btn{margin-top:10px}
+.chip{
+  display:inline-block;color:var(--cyan);font-size:10px;
+  font-weight:800;letter-spacing:1.5px;text-transform:uppercase
+}
+footer{border-top:1px solid var(--line);padding:35px 0}
+.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+footer p{font-size:11px;margin:0}
+dialog{
+  max-width:440px;width:calc(100% - 30px);background:#181722;
+  border:1px solid #594774;color:white;border-radius:13px;
+  padding:27px;box-shadow:0 30px 100px #000c
+}
+dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
+dialog label{display:block;margin:15px 0 6px;color:#c9c0d6;font-size:12px}
+dialog input{
+  display:block;width:100%;background:#0c0c13;color:white;
+  border:1px solid #474358;padding:13px;border-radius:6px
+}
+.dialog-top{display:flex;align-items:center;justify-content:space-between}
+.close{border:0;background:none;color:white;font-size:25px}
+#toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  z-index:40;max-width:90%;background:#29213a;color:white;
+  border:1px solid #9e7dd2;border-radius:8px;padding:13px 20px;
+  font-size:12px;display:none;text-align:center
+}
+@media(max-width:850px){
+  .hero-grid,.sponsor-block{grid-template-columns:1fr}
+  .portal{max-width:340px}
+  nav{gap:13px}
+  nav a{font-size:11px}
+  .cards{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  h1{letter-spacing:-2px}
+  section{padding:65px 0}
+  .hero{padding:65px 0}
+  .metrics{grid-template-columns:1fr 1fr}
+  .metric:last-child{grid-column:span 2;border-top:1px solid var(--line)}
+  .steps,.fund-grid,.action-grid{grid-template-columns:1fr}
+  .fund-grid{grid-template-columns:repeat(2,1fr)}
+  nav{display:none}
+  .sponsor-art{min-height:240px}
+  .sponsor-copy,.sponsor-art{padding:27px}
+  .action-card p{min-height:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand">
+      <div class="mark"><span>Z</span></div>
+      <div>
+        <strong>ZETSUMETSU</strong>
+        <small>THE CORPORATION</small>
+      </div>
+    </a>
+    <nav>
+      <a href="#about">The Event</a>
+      <a href="#path">The Path</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#join" class="btn outline">Get Involved</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">OFFICIAL CORPORATE EVENT · INVITATION ONLY</span>
+      <div class="eyebrow">Exclusive Grand Opening Sponsorship</div>
+      <h1>BECOME YOUR <span class="accent">ZETSU VERSION.</span></h1>
+      <p>
+        What do you want to become? The Zetsumetsu Corporation
+        is creating a reality where people can pursue their goals
+        through financial support, practical development,
+        and real opportunities.
+      </p>
+      <div class="buttons">
+        <a href="#about" class="btn primary">Discover the Sponsorship</a>
+        <a href="#join" class="btn outline">Join the Interest List</a>
+      </div>
+      <div class="note">One invited participant per month during the grand opening.</div>
+    </div>
+
+    <div class="portal" aria-label="Up to 600 dollars available per participant">
+      <div class="ring"></div>
+      <div class="orb">
+        <div class="eyebrow">One Path</div>
+        <div class="big">$600</div>
+        <div class="mini">POTENTIAL SPONSORSHIP</div>
+        <div class="dash"></div>
+        <div class="mini">YOUR GOAL · YOUR PROGRESS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap metrics">
+    <div class="metric"><strong>$600</strong><span>MAXIMUM PER PARTICIPANT</span></div>
+    <div class="metric"><strong>1 / MONTH</strong><span>INVITED PARTICIPANTS</span></div>
+    <div class="metric"><strong>6</strong><span>EDUCATIONAL CERTIFICATES</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The Event</div>
+      <h2>Opportunity begins with <span class="accent">a choice.</span></h2>
+      <p>
+        The Exclusive Grand Opening is The Zetsumetsu Corporation's
+        limited sponsorship initiative. Selected individuals gain
+        access to a development pathway built around what they want
+        to achieve.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="number">01 / SUPPORT</div>
+        <h3>Financial Assistance</h3>
+        <p>
+          Up to $600 in sponsorship funding for approved educational
+          or business ventures, progressively available through
+          completed milestones.
+        </p>
+      </article>
+      <article class="card">
+        <div class="number">02 / DEVELOPMENT</div>
+        <h3>A Path to Follow</h3>
+        <p>
+          Participants plan, develop, publish, and learn through
+          practical work. Zetsu EDU provides educational assessment
+          and certificates for completed milestones.
+        </p>
+      </article>
+      <article class="card">
+        <div class="number">03 / INDEPENDENCE</div>
+        <h3>Your Work Remains Yours</h3>
+        <p>
+          Participants retain ownership of their creations. Each
+          stage is a choice. Continuing to the next is never required.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="subtle" id="path">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The Development Path</div>
+      <h2>Build toward <span class="accent">your reality.</span></h2>
+      <p>
+        Six educational milestones, individually recognized.
+        The 175-hour curriculum has a three-week intensive target.
+        Participants progress according to their completed work.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="n">01</div>
+        <div>
+          <h3>Plan Your Path</h3>
+          <p>Define the goal, tools, requirements, and development plan.</p>
+          <small>Certificate 01 · 15 instructional hours</small>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">02</div>
+        <div>
+          <h3>Build a Prototype</h3>
+          <p>Turn the approved plan into a demonstrable prototype.</p>
+          <small>Certificate 02 · 40 instructional hours</small>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">03</div>
+        <div>
+          <h3>Complete & Publish</h3>
+          <p>Finish the build, prepare monetization, and publish.</p>
+          <small>Certificate 03 · 90 instructional hours</small>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">04</div>
+        <div>
+          <h3>Explore Commercial Options</h3>
+          <p>Evaluate publishing, distribution, and independent opportunities.</p>
+          <small>Certificate 04 · 6 instructional hours</small>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">05</div>
+        <div>
+          <h3>Create a Marketing Plan</h3>
+          <p>Develop an advertising strategy and repeatable promotional steps.</p>
+          <small>Certificate 05 · 14 instructional hours</small>
+        </div>
+      </article>
+      <article class="step">
+        <div class="n">06</div>
+        <div>
+          <h3>Launch Your Promotion</h3>
+          <p>Activate promotional channels and demonstrate the process.</p>
+          <small>Certificate 06 · 10 instructional hours</small>
+        </div>
+      </article>
+    </div>
+
+    <div class="funding">
+      <div class="eyebrow">Corporate Funding Schedule</div>
+      <h3>Support increases with verified progress.</h3>
+      <div class="fund-grid">
+        <div class="fund"><strong>$25</strong><span>Signup & Agreement</span></div>
+        <div class="fund"><strong>$172.50</strong><span>Prototype Approval</span></div>
+        <div class="fund"><strong>$230</strong><span>Completed Build</span></div>
+        <div class="fund"><strong>$172.50</strong><span>Marketing Launch</span></div>
+      </div>
+      <p>
+        The Zetsumetsu Corporation provides funding at the
+        established stages. Participants choose whether to enter
+        each subsequent stage. Work is verified before applicable
+        milestone payments are released.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="sponsors">
+  <div class="wrap">
+    <div class="sponsor-block">
+      <div class="sponsor-art">
+        <div class="eyebrow">Outside Sponsor Boost</div>
+        <div class="amount">$75</div>
+        <span>COMMUNITY FUNDING GOAL</span>
+      </div>
+      <div class="sponsor-copy">
+        <div class="eyebrow">Support The Corporation's Mission</div>
+        <h2>Help create more opportunity.</h2>
+        <p>
+          The Zetsumetsu Corporation independently provides and
+          administers the sponsorship funding offered to its
+          selected participants.
+        </p>
+        <p>
+          The $75 Outside Sponsor Boost invites multiple
+          supporters to strengthen the corporation's ability
+          to sustain those opportunities.
+        </p>
+        <ul>
+          <li>Contributions go directly to The Zetsumetsu Corporation.</li>
+          <li>Support can help offset corporate sponsorship costs.</li>
+          <li>The participant's $600 potential sponsorship remains unchanged.</li>
+          <li>Participants are not required to complete every stage.</li>
+        </ul>
+        <button class="btn cyan" onclick="openFundraiser()">
+          Support Through GoFundMe
+        </button>
+        <p class="fine">
+          The fundraiser link will be connected when the campaign
+          is published. Contributions support a corporate initiative,
+          not a tax-deductible charitable campaign.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subtle">
+  <div class="wrap reality">
+    <div class="eyebrow">The Zetsumetsu Corporation</div>
+    <blockquote>
+      "The Zetsumetsu Corporation
+      <span class="accent">created the reality</span>
+      where it exists."
+    </blockquote>
+    <p>
+      The individual owns what they create. The corporation
+      creates a reality in which they can develop it.
+    </p>
+    <p>
+      The purpose is not to take ownership of someone's future,
+      but to make the opportunity to build one accessible.
+    </p>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Get Involved</div>
+      <h2>Take part in the <span class="accent">Grand Opening.</span></h2>
+      <p>
+        Participation is limited during the initial launch.
+        Interested individuals and supporters can join the
+        appropriate interest list.
+      </p>
+    </div>
+
+    <div class="action-grid">
+      <div class="action-card">
+        <span class="chip">Future Participants</span>
+        <h3>Student Interest List</h3>
+        <p>
+          Want to pursue your own Zetsu Version?
+          Join the interest list for consideration when future
+          invitations become available.
+        </p>
+        <button class="btn primary" onclick="openWaitlist('participant')">
+          Join Participant Waitlist
+        </button>
+        <p style="margin-top:13px;font-size:11px">
+          The current grand opening accepts invited participants only.
+          Waitlist registration is not sponsorship approval.
+        </p>
+      </div>
+      <div class="action-card">
+        <span class="chip">Outside Supporters</span>
+        <h3>Sponsor Interest List</h3>
+        <p>
+          Interested in supporting The Zetsumetsu Corporation's
+          sponsorship initiative? Join the sponsor interest list
+          for future opportunities and updates.
+        </p>
+        <button class="btn outline" onclick="openWaitlist('sponsor')">
+          Join Sponsor Waitlist
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand">
+      <div class="mark"><span>Z</span></div>
+      <div>
+        <strong>ZETSUMETSU</strong>
+        <small>THE CORPORATION</small>
+      </div>
+    </div>
+    <p>Exclusive Grand Opening Sponsorship · Corporate Event</p>
+    <p>© <span id="year"></span> The Zetsumetsu Corporation</p>
+  </div>
+</footer>
+
+<dialog id="waitlistDialog">
+  <div class="dialog-top">
+    <div class="eyebrow" id="dialogType">Interest List</div>
+    <button class="close" type="button" onclick="closeWaitlist()" aria-label="Close">×</button>
+  </div>
+  <h3 id="dialogTitle" style="margin-top:15px">Join the Interest List</h3>
+  <p style="font-size:12px">Leave your information to register interest when submissions are enabled.</p>
+  <form id="waitlistForm">
+    <label for="fullName">Name</label>
+    <input id="fullName" name="name" autocomplete="name" required maxlength="100">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+    <input id="interestType" type="hidden" name="type">
+    <button class="btn primary" type="submit" style="width:100%;margin-top:22px">
+      Submit Interest
+    </button>
+  </form>
+  <p style="font-size:11px;margin:15px 0 0">
+    Demo interface. No information is sent or saved until a
+    registration endpoint is connected.
+  </p>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/*
+  CONNECT THESE WHEN READY.
+  No fundraiser URL or registration backend has been invented.
+*/
+const CONFIG = {
+  goFundMeURL: "",
+  participantWaitlistAPI: "",
+  sponsorWaitlistAPI: ""
+};
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const dialog = document.getElementById("waitlistDialog");
+const form = document.getElementById("waitlistForm");
+const toast = document.getElementById("toast");
+let toastTimer;
+
+function showNotice(message) {
+  toast.textContent = message;
+  toast.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.style.display = "none", 4800);
+}
+
+function openFundraiser() {
+  if (CONFIG.goFundMeURL) {
+    window.open(CONFIG.goFundMeURL, "_blank", "noopener,noreferrer");
+  } else {
+    showNotice("GoFundMe campaign link has not been connected yet.");
+  }
+}
+
+function openWaitlist(type) {
+  form.reset();
+  document.getElementById("interestType").value = type;
+  document.getElementById("dialogType").textContent =
+    type === "participant" ? "Future Participant" : "Outside Sponsor";
+  document.getElementById("dialogTitle").textContent =
+    type === "participant" ? "Participant Interest List" : "Sponsor Interest List";
+  dialog.showModal();
+}
+
+function closeWaitlist() {
+  dialog.close();
+}
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const type = document.getElementById("interestType").value;
+  const endpoint = type === "participant"
+    ? CONFIG.participantWaitlistAPI
+    : CONFIG.sponsorWaitlistAPI;
+
+  if (!endpoint) {
+    showNotice("Demo only. No information was sent or saved.");
+    return;
+  }
+
+  const button = form.querySelector("button[type=submit]");
+  button.disabled = true;
+  try {
+    const payload = Object.fromEntries(new FormData(form).entries());
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error("Request failed");
+    closeWaitlist();
+    showNotice("Your interest was submitted.");
+  } catch(error) {
+    showNotice("Submission failed. Please try again.");
+  } finally {
+    button.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
