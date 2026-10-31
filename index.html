@@ -212,8 +212,8 @@ header{
   font-weight:800;letter-spacing:1.5px;text-transform:uppercase
 }
 footer{border-top:1px solid var(--line);padding:35px 0}
-.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-footer p{font-size:11px;margin:0}
+.foot{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+footer p{font-size:12px;margin:0;line-height:1.6;overflow-wrap:anywhere}
 dialog{
   max-width:440px;width:calc(100% - 30px);background:#181722;
   border:1px solid #594774;color:white;border-radius:13px;
@@ -567,15 +567,10 @@ dialog input{
 
 <footer>
   <div class="wrap foot">
-    <div class="brand">
-      <div class="mark"><span>Z</span></div>
-      <div>
-        <strong>ZETSUMETSU</strong>
-        <small>THE CORPORATION</small>
-      </div>
-    </div>
-    <p>Exclusive Grand Opening Sponsorship · Corporate Event</p>
-    <p>© <span id="year"></span> The Zetsumetsu Corporation</p>
+    <p>Zetsumetsu EOe™ | Zetsu EDU™ | Zetsu R&amp;D -CAGE:20BU7 | © 2024 - 2026 Zetsumetsu Corporation™ | Artworqq Kevin Suber</p>
+    <p>© 2026 Zetsumetsu Corporation™</p>
+    <p>All systems, products, and materials are the property of Zetsumetsu Corporation.</p>
+    <p>Unauthorized use or reproduction is prohibited.</p>
   </div>
 </footer>
 
@@ -614,8 +609,6 @@ const CONFIG = {
   participantWaitlistAPI: "",
   sponsorWaitlistAPI: ""
 };
-
-document.getElementById("year").textContent = new Date().getFullYear();
 
 const dialog = document.getElementById("waitlistDialog");
 const form = document.getElementById("waitlistForm");
